@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과목별 질문 등록</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>과목별 질문 등록</h1>
+        <form id="questionForm">
+            <select id="subject" required>
+                <option value="">과목 선택</option>
+                <option value="국어">국어</option>
+                <option value="영어">영어</option>
+                <option value="수학">수학</option>
+                <option value="사회">사회</option>
+                <option value="과학">과학</option>
+            </select>
+            <textarea id="question" placeholder="질문을 입력하세요" required></textarea>
+            <button type="submit">질문하기</button>
+        </form>
+        <div id="subjectTabs">
+            <button class="tab-button active" data-subject="all">전체</button>
+            <button class="tab-button" data-subject="국어">국어</button>
+            <button class="tab-button" data-subject="영어">영어</button>
+            <button class="tab-button" data-subject="수학">수학</button>
+            <button class="tab-button" data-subject="사회">사회</button>
+            <button class="tab-button" data-subject="과학">과학</button>
+        </div>
+        <div id="questionList"></div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBGax4Z6d55BLeZx02nkSUvZnXbaOLNxG0",
+        authDomain: "practice-86465.firebaseapp.com",
+        projectId: "practice-86465",
+        storageBucket: "practice-86465.appspot.com",
+        messagingSenderId: "401629611512",
+        appId: "1:401629611512:web:db479fa00f8b1eb665420d",
+        measurementId: "G-GCCG6TL0ZK"
+      };
+      // Firebase 초기화
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
