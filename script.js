@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newQuestionRef.set({
             subject: subject,
             question: question,
-            answers: []
+            timestamp: firebase.database.ServerValue.TIMESTAMP
         });
     }
 
@@ -69,8 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const answerRef = questionsRef.child(questionKey).child('answers').push();
         answerRef.set({
             text: answer,
-            likes: 0,
-            dislikes: 0
+            timestamp: firebase.database.ServerValue.TIMESTAMP
         });
     }
 
@@ -87,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         answerList.appendChild(answerItem);
     }
 
+    // 페이지 로드 시 기존 질문 불러오기
     questionsRef.on('child_added', (snapshot) => {
         const questionData = snapshot.val();
         displayQuestion(snapshot.key, questionData);
